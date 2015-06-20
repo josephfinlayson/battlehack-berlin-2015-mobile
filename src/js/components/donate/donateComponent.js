@@ -1,8 +1,8 @@
 import componentsModule from '../components.module';
-import template from './paymentView.html!text';
-import './paymentStyles.css!';
+import template from './donateView.html!text';
+import './donateStyles.css!';
 
-componentsModule.directive('pifPaymentComponent', () => {
+componentsModule.directive('pifDonateComponent', () => {
   return {
     restrict: 'E',
     scope:{},

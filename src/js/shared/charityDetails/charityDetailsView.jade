@@ -3,7 +3,15 @@ div(style="min-height: 90vh")
       ng-style="{'background-image': 'url(' + vm.charity.image + ')'}"
     )
     .content
-      button.button.button-large.button-clear.flat.icon.ion-heart.pull-right.text-white
+      button.button.button-large.button-clear.flat.icon.ion-heart.pull-right.text-white(
+          title="Details"
+          ui-sref="tab.charity.details({id: vm.charity_id})"
+        )
+
+      button.button.button-large.button-clear.flat.icon.ion-card.pull-right.text-white(
+          title="Donate"
+          ui-sref="tab.charity.donate({id: vm.charity_id})"
+        )
 
   .mid-bar.dark-bg.z1.padding
     .pull-right(style="text-align: right")
@@ -17,9 +25,11 @@ div(style="min-height: 90vh")
     h3 {{ vm.charity.name }}
 
   .content.double-padding
-    p.text-muted {{ vm.charity.description }}
+    ion-nav-view(
+      name="sub-content"
+    )
 
   button.button.button-fab.button-fab-bottom-right.button-assertive.icon.ion-card(
-      ui-sref="tab.donate({ id: vm.charity._id })"
+      ui-sref="tab.charity.donate({ id: vm.charity._id })"
     )
 

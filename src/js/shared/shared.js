@@ -1,5 +1,5 @@
 'use strict';
-import './payment/paymentDirective';
+import './donate/donateDirective';
 import './charity/charityDirective';
 import './charityDetails/charityDetailsDirective';
 import './charities/charitiesDirective';

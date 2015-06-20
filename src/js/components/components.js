@@ -1,5 +1,5 @@
 'use strict';
-import './payment/paymentComponent';
+import './donate/donateComponent';
 import './map/mapComponent';
 import './main/mainComponent';
 import './charities/charitiesComponent';

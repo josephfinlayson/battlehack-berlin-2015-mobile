@@ -1,9 +1,9 @@
 import sharedModule from '../shared.module';
 import braintree from 'braintree-web';
-import template from './paymentView.html!text';
+import template from './donateView.html!text';
 
 
-sharedModule.directive('pifPayment', ($http) => {
+sharedModule.directive('pifDonate', ($http) => {
 
   return {
     restrict: 'E',

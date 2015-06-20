@@ -3,10 +3,11 @@ import sharedModule from './shared/shared';
 import componentsModule from './components/components';
 import 'ionic';
 import mainView from '../views/main.html!text';
-import paymentView from '../views/payment.html!text';
+import donateView from '../views/donate.html!text';
 import mapView from '../views/map.html!text';
 import charitiesView from '../views/charities.html!text';
 import charityView from '../views/charity.html!text';
+import charityDetailsView from '../views/charityDetails.html!text';
 
 import 'ionic-material/dist/ionic.material.min';
 import 'ionic-material/dist/ionic.material.min.css!';
@@ -66,16 +67,6 @@ const app = angular.module('pif', [
                 }
             })
 
-            .state('tab.payment', {
-                url: '/payment',
-                onEnter: setTitle('Donate'),
-                views: {
-                    'content': {
-                        template: paymentView
-                    }
-                }
-            })
-            
             .state('tab.charities', {
               url: '/charities',
               onEnter: setTitle('Discover Projects Close To You'),
@@ -91,6 +82,23 @@ const app = angular.module('pif', [
               views: {
                 'content': {
                   template: charityView
+                }
+              }
+            })
+            .state('tab.charity.details', {
+              url: '/details',
+              views: {
+                'sub-content': {
+                  template: charityDetailsView
+                }
+              }
+            })
+
+            .state('tab.charity.donate', {
+              url: '/donate',
+              views: {
+                'sub-content': {
+                  template: donateView
                 }
               }
             })
