@@ -45,8 +45,10 @@
       "braintree-web": "npm:braintree-web@^2.8.0",
       "css": "github:systemjs/plugin-css@^0.1.12",
       "ionic": "github:driftyco/ionic-bower@^1.0.0",
+      "ionic-material": "github:zachsoft/Ionic-Material@^0.4.2",
       "ngmap": "npm:ngmap@^1.7.9",
-      "text": "github:systemjs/plugin-text@^0.0.2"
+      "text": "github:systemjs/plugin-text@^0.0.2",
+      "zachsoft/Ionic-Material": "github:zachsoft/Ionic-Material@^0.4.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",

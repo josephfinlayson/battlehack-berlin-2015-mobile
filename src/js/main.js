@@ -6,6 +6,9 @@ import mainView from '../views/main.html!text';
 import paymentView from '../views/payment.html!text';
 import mapView from '../views/map.html!text';
 
+import 'ionic-material/dist/ionic.material.min';
+import 'ionic-material/dist/ionic.material.min.css!';
+
 const app = angular.module('pif', [
     'ionic',
     sharedModule.name,
