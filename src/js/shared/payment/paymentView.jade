@@ -1,0 +1,20 @@
+div
+  ion-spinner(
+    ng-if="vm.state === 'isLoading'"
+    )
+
+  h1(
+    ng-if="vm.state === 'isCompleted'"
+    )
+    | Payment Completed.
+
+  form(
+    ng-if="vm.state === 'isInitial'"
+    method="post" 
+    ng-submit="vm.createTransaction()"
+    )
+      #dropin
+      input(
+        type="submit" 
+        value="Pay $300"
+      )
