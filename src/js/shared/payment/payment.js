@@ -1,3 +1,23 @@
+import sharedModule from '../shared.module';
+import template from './payment.html!text';
+
+
+sharedModule.directive('pif-payment', ()=>{
+  return {
+    restrict: 'E',
+    template: template,
+    controllerAs: 'vm',
+    bindToController: true,
+    controller() {
+      let vm = this;
+      vm.ready = true;
+    }
+  }; 
+});
+
+
+
+
 /*
   var clientTokenUrl = 'http://bh-berlin.herokuapp.com/api/client-token';
   var postUrl = 'http://bh-berlin.herokuapp.com/api/payment-methods';
