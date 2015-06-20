@@ -1,4 +1,5 @@
 
+import angular from 'angular';
 import sharedModule from './shared/shared';
 import componentsModule from './components/components.module';
 
