@@ -1,4 +1,5 @@
 'use strict';
+import modelsModule from './models/models';
 import sharedModule from './shared/shared';
 import componentsModule from './components/components';
 import 'ionic';
@@ -17,6 +18,7 @@ const app = angular.module('pif', [
     'ionic',
     'ionic-material',
     'ngCordova',
+    modelsModule.name,
     sharedModule.name,
     componentsModule.name
 ])

@@ -1,9 +1,6 @@
 'use strict';
 import componentsModule from '../components.module';
 import template from './charityView.html!text';
-
-
-import '../charities/charitiesService';
 import './charityStyles.css!css';
 
 componentsModule.directive('pifCharityComponent', ($stateParams,  Charities) => {
