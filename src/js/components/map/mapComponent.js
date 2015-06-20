@@ -1,3 +1,4 @@
+'use strict';
 import componentsModule from '../components.module';
 import mapTemplate from './mapView.html!text';
 import './mapStyles.css!';
