@@ -1,4 +1,3 @@
 import './payment/paymentDirective';
-import './shared.module';
 
-export default mod;
+export * from './shared.module';
