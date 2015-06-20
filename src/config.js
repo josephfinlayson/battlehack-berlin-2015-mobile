@@ -1,5 +1,4 @@
 System.config({
-  "baseURL": "www",
   "transpiler": "babel",
   "babelOptions": {
     "optional": [
@@ -15,6 +14,7 @@ System.config({
 
 System.config({
   "map": {
+    "angular": "github:angular/bower-angular@1.4.1",
     "babel": "npm:babel-core@5.5.8",
     "babel-runtime": "npm:babel-runtime@5.5.8",
     "core-js": "npm:core-js@0.9.18",

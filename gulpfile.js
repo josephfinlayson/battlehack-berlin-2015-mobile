@@ -74,7 +74,10 @@ gulp.task('js', function() {
       .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('run', ['less', 'js', 'jade'], function () {
+gulp.task('copy', ['less', 'js', 'jade'], function() {
+});
+
+gulp.task('run', ['copy'], function () {
   gulp.watch(paths.less, ['less']);
   gulp.watch(paths.js, ['js']);
   gulp.watch(paths.jade, ['jade']);
