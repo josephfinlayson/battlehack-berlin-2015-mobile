@@ -6,6 +6,7 @@ import mainView from '../views/main.html!text';
 import paymentView from '../views/payment.html!text';
 import mapView from '../views/map.html!text';
 import charitiesView from '../views/charities.html!text';
+import charityView from '../views/charity.html!text';
 
 import 'ionic-material/dist/ionic.material.min';
 import 'ionic-material/dist/ionic.material.min.css!';
@@ -72,6 +73,15 @@ const app = angular.module('pif', [
               views: {
                 'content': {
                   template: charitiesView
+                }
+              }
+            })
+
+            .state('tab.charity', {
+              url: '/charities/:id',
+              views: {
+                'content': {
+                  template: charityView
                 }
               }
             })
