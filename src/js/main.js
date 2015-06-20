@@ -51,7 +51,7 @@ const app = angular.module('pif', [
             .state('tab.map', {
                 url: '/map',
                 views: {
-                    'tab-map': {
+                    'content': {
                         template: mapView
                     }
                 }
@@ -60,7 +60,7 @@ const app = angular.module('pif', [
             .state('tab.payment', {
                 url: '/payment',
                 views: {
-                    'tab-payment': {
+                    'content': {
                         template: paymentView
                     }
                 }
