@@ -1,8 +1,9 @@
 
 import sharedModule from './shared/shared';
-import MainClass from './app/index';
-new MainClass();
+import componentsModule from './components/components.module';
 
 
-let app = angular.module('pif', [sharedModule.name]);
+let app = angular.module('pif', [
+    sharedModule.name, componentsModule.name
+]);
 angular.bootstrap(document, app.name);
