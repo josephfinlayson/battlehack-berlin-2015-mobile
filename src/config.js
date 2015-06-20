@@ -21,8 +21,10 @@ System.config({
     "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.12",
     "ionic": "github:driftyco/ionic-bower@1.0.0",
+    "ionic-material": "github:zachsoft/Ionic-Material@0.4.2",
     "ngmap": "npm:ngmap@1.7.9",
     "text": "github:systemjs/plugin-text@0.0.2",
+    "zachsoft/Ionic-Material": "github:zachsoft/Ionic-Material@0.4.2",
     "github:angular-ui/ui-router@0.2.13": {
       "angular": "github:angular/bower-angular@1.4.1"
     },
