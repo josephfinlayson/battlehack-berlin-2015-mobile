@@ -1,11 +1,14 @@
 import sharedModule from '../shared.module';
+import braintree from 'braintree-web';
 import template from './paymentView.html!text';
 
 
-sharedModule.directive('pif-payment', ($http) => {
+sharedModule.directive('pifPayment', ($http) => {
 
   return {
     restrict: 'E',
+    scope: {
+    },
     template: template,
     controllerAs: 'vm',
     bindToController: true,

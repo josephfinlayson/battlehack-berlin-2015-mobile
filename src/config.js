@@ -18,6 +18,7 @@ System.config({
     "angular-google-maps": "github:angular-ui/angular-google-maps@2.1.5",
     "babel": "npm:babel-core@5.5.8",
     "babel-runtime": "npm:babel-runtime@5.5.8",
+    "braintree-web": "npm:braintree-web@2.8.0",
     "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.12",
     "ionic": "github:driftyco/ionic-bower@1.0.0",
@@ -95,6 +96,9 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "npm:babel-runtime@5.5.8": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:braintree-web@2.8.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:buffer@3.2.2": {
