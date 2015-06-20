@@ -63,15 +63,20 @@ gulp.task('less', function () {
       .pipe(gulp.dest(paths.dist));
 });
 
-
 gulp.task('jade', function() {
   gulp.src(paths.jade)
       .pipe(gulpPlugins.jade())
       .pipe(gulp.dest(paths.dist))
 });
 
-
 gulp.task('js', function() {
   gulp.src(paths.js)
       .pipe(gulp.dest(paths.dist));
 });
+
+gulp.task('run', ['less', 'js', 'jade'], function () {
+  gulp.watch(paths.less, ['less']);
+  gulp.watch(paths.js, ['js']);
+  gulp.watch(paths.jade, ['jade']);
+});
+
