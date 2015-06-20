@@ -8,10 +8,12 @@ import mapView from '../views/map.html!text';
 
 import 'ionic-material/dist/ionic.material.min';
 import 'ionic-material/dist/ionic.material.min.css!';
+import 'ng-cordova/dist/ng-cordova.min';
 
 const app = angular.module('pif', [
     'ionic',
     'ionic-material',
+    'ngCordova',
     sharedModule.name,
     componentsModule.name
 ])
