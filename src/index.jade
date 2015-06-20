@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        link(rel='stylesheet', href='css/styles.css')
+    body
+        ui-view
+        if useBundleScript
+            script(src="bundle.js")
+        else
+            script(src='jspm_packages/system.js')
+            script(src='config.js')
+            script.
+                System.import('js/main');
