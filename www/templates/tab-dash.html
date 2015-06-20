@@ -1,6 +1,17 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
     <div class="list card">
+      <div class="item item-divider">Buy something</div>
+      <div class="item item-body">
+        <div>
+          <form method="post" action="http://bh-berlin.herokuapp.com/payment-methods">
+            <div id="dropin"></div>
+            <input type="submit" value="Pay $300">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
       <div class="item item-divider">Recent Updates</div>
       <div class="item item-body">
         <div>
