@@ -1,5 +1,6 @@
 import componentsModule from '../components.module';
 import template from './paymentView.html!text';
+import './paymentStyles.css!';
 
 componentsModule.directive('pifPaymentComponent', () => {
   return {
