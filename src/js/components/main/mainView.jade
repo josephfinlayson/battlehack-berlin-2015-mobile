@@ -5,8 +5,7 @@ ion-side-menus
         ng-click="vm.toggleLeft()"
         ng-hide="$exposeAside.active"
       )
-      h1.title
-        | Map
+      h1.title {{ $root.title }}
     ion-nav-view(
       style="top:44px;height:calc(100% - 44px)"
       name='content'

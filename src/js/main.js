@@ -35,6 +35,12 @@ const app = angular.module('pif', [
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
+      function setTitle(name) {
+        return function($rootScope) {
+          $rootScope.title = name;
+        };
+      }
+
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
         // Set up the various states which the app can be in.
@@ -52,6 +58,7 @@ const app = angular.module('pif', [
 
             .state('tab.map', {
                 url: '/map',
+                onEnter: setTitle('Find Your Projects On Map'),
                 views: {
                     'content': {
                         template: mapView
@@ -61,6 +68,7 @@ const app = angular.module('pif', [
 
             .state('tab.payment', {
                 url: '/payment',
+                onEnter: setTitle('Donate'),
                 views: {
                     'content': {
                         template: paymentView
@@ -70,6 +78,7 @@ const app = angular.module('pif', [
             
             .state('tab.charities', {
               url: '/charities',
+              onEnter: setTitle('Discover Projects Close To You'),
               views: {
                 'content': {
                   template: charitiesView

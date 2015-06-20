@@ -12,12 +12,13 @@ componentsModule.directive('pifCharityComponent', ($stateParams,  Charities) => 
     template: template,
     bindToController: true,
     controllerAs: 'vm',
-    controller() {
+    controller($rootScope) {
       let vm = this;
       var id = $stateParams.id;
       vm.id = id;
       Charities.getCharity(id).then((charity)=>{
         vm.charity = charity;
+        $rootScope.title = vm.charity.name;
       });
     }
   };
