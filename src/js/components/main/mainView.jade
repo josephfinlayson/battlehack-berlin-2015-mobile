@@ -24,10 +24,18 @@ ion-side-menus
           ui-sref="tab.map"
           )
           i.icon.ion-map
-          | Show Map
+          | Map
+
+        a.item.item-icon-left(
+          ui-sref-active="active"
+          ui-sref="tab.charities"
+          )
+          i.icon.ion-ios-location
+          | Projects Nearby
+
         a.item.item-icon-left(
           ui-sref-active="active"
           ui-sref="tab.payment"
           )
-          i.icon.ion-ios-location
+          i.icon.ion-cash
           | Payment

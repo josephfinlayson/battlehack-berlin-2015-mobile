@@ -5,6 +5,7 @@ import 'ionic';
 import mainView from '../views/main.html!text';
 import paymentView from '../views/payment.html!text';
 import mapView from '../views/map.html!text';
+import charitiesView from '../views/charities.html!text';
 
 import 'ionic-material/dist/ionic.material.min';
 import 'ionic-material/dist/ionic.material.min.css!';
@@ -64,7 +65,17 @@ const app = angular.module('pif', [
                         template: paymentView
                     }
                 }
-            });
+            })
+            
+            .state('tab.charities', {
+              url: '/charities',
+              views: {
+                'content': {
+                  template: charitiesView
+                }
+              }
+            })
+            ;
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/map');
