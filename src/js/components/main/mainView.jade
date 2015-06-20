@@ -1,0 +1,32 @@
+ion-side-menus
+  ion-side-menu-content
+    ion-header-bar.bar-positive
+      button.button.button-icon.ion-navicon.flat(
+        ng-click="vm.toggleLeft()"
+        ng-hide="$exposeAside.active"
+      )
+      h1.title.fab-right
+        | Map
+    ion-nav-view(
+      name='content'
+    )
+
+  ion-side-menu(
+    expose-aside-when="large"
+    )
+    ion-header-bar.flat
+      h1.title Menu
+    ion-content
+      .list
+        a.item.item-icon-left(
+          ui-sref-active="active"
+          ui-sref="tab.map"
+          )
+          i.icon.ion-map
+          | Show Map
+        a.item.item-icon-left(
+          ui-sref-active="active"
+          ui-sref="tab.payment"
+          )
+          i.icon.ion-ios-location
+          | Payment
