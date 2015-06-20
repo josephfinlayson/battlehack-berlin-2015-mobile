@@ -11,6 +11,7 @@ import 'ionic-material/dist/ionic.material.min.css!';
 
 const app = angular.module('pif', [
     'ionic',
+    'ionic-material'',
     sharedModule.name,
     componentsModule.name
 ])
