@@ -7,9 +7,14 @@ componentsModule.directive('pifMapComponent', () => {
 	return {
 		template: mapTemplate,
 		link: (scope) => {
-			scope.$on('mapInitialized', function(event, map) {
-					map.setCenter(new google.maps.LatLng(-25.363882, 131.044922));
-					map.setZoom(8);
+			scope.$on('mapInitialized', (event, map) => {
+					map.setCenter(new google.maps.LatLng(52, 13));
+					map.setZoom(10);
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(52, 13),
+						map: map,
+						title: 'Hello World!'
+					});
 				}
 			)
 		}
