@@ -8,20 +8,32 @@ sharedModule.directive('pifDonate', ($http) => {
   return {
     restrict: 'E',
     scope: {
-      charityId: '='
+      charity: '='
     },
     template: template,
     controllerAs: 'vm',
     bindToController: true,
-    controller($element) {
+    controller($scope, $element) {
       let vm = this;
 
       let clientTokenUrl = 'https://bh-berlin.herokuapp.com/api/client-token';
-      let postUrl = 'https://bh-berlin.herokuapp.com/api/charities/' + vm.charityId + '/payment';
+      let postUrl;
+     
+      $scope.$watch(() => vm.charity, (charity) => {
+        if (!charity) {
+          return;
+        }
+        postUrl = 'https://bh-berlin.herokuapp.com/api/charities/' + charity._id + '/payment';
+      });
+
+
+
+      vm.state = 'isLoading';
 
       $http.get(clientTokenUrl).then(function (resp) {
         return resp.data;
       }).then(function (token) {
+        vm.state = 'isInitial';
         braintree.setup(
           // Replace this with a client token from your server
           token,
@@ -32,12 +44,11 @@ sharedModule.directive('pifDonate', ($http) => {
         );
       });
 
-      vm.state = 'isInitial';
       vm.createTransaction = function () {
         vm.state = 'isLoading';
 
         var nonce = $element.find('[name="payment_method_nonce"]').val();
-        vm.post(postUrl, {
+        $http.post(postUrl, {
             payment_method_nonce: nonce
         }).then(function () {
           vm.state = 'isCompleted';

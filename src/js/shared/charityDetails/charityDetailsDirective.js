@@ -2,7 +2,7 @@ import sharedModule from '../shared.module';
 import template from './charityDetailsView.html!text';
 
 
-sharedModule.directive('pifCharityDetails', ($http) => {
+sharedModule.directive('pifCharityDetails', ($state) => {
 
   return {
     restrict: 'E',
@@ -15,6 +15,10 @@ sharedModule.directive('pifCharityDetails', ($http) => {
     bindToController: true,
     controller($element) {
       let vm = this;
+
+      vm.isDonateState = ()=>{
+        return $state.includes('tab.charity.donate');
+      };
     }
   }; 
 });

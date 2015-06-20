@@ -4,14 +4,24 @@ div(style="min-height: 90vh")
     )
     .content
       button.button.button-large.button-clear.flat.icon.ion-heart.pull-right.text-white(
-          title="Details"
-          ui-sref="tab.charity.details({id: vm.charity_id})"
+          title="Donate"
+          ui-sref-active="active"
+          ui-sref="tab.charity.donate({id: vm.charity._id})"
         )
 
-      button.button.button-large.button-clear.flat.icon.ion-card.pull-right.text-white(
-          title="Donate"
-          ui-sref="tab.charity.donate({id: vm.charity_id})"
+
+      button.button.button-large.button-clear.flat.icon.ion-ios-paper.pull-right.text-white(
+          title="Details"
+          ui-sref-active="active"
+          ui-sref="tab.charity.details({id: vm.charity._id})"
         )
+
+      button.button.button-large.button-clear.flat.icon.ion-fork-repo.pull-right.text-white(
+          title="Talents"
+          ui-sref-active="active"
+          ui-sref="tab.talents({id: vm.charity._id})"
+        )
+
 
   .mid-bar.dark-bg.z1.padding
     .pull-right(style="text-align: right")
@@ -24,12 +34,13 @@ div(style="min-height: 90vh")
 
     h3 {{ vm.charity.name }}
 
-  .content.double-padding
+  .content(style="height: 50vh")
     ion-nav-view(
       name="sub-content"
     )
 
   button.button.button-fab.button-fab-bottom-right.button-assertive.icon.ion-card(
+      ng-class="{'hide': vm.isDonateState()}"
       ui-sref="tab.charity.donate({ id: vm.charity._id })"
     )
 

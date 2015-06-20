@@ -1,6 +1,7 @@
-div
+.content.double-padding
   ion-spinner(
-    ng-if="vm.state === 'isLoading'"
+    style="display:block; margin: 20px; text-align: center"
+    ng-show="vm.state === 'isLoading'"
     )
 
   h1(
@@ -14,7 +15,10 @@ div
     ng-submit="vm.createTransaction()"
     )
       #dropin
-      input(
+
+      button.button.button-assertive.button-full.button-large(
         type="submit" 
-        value="Pay $300"
       )
+        i.icon.ion-android-happy
+        span &nbsp;
+        span Donate ({{ 1 | currency }})
