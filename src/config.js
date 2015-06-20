@@ -15,6 +15,7 @@ System.config({
 System.config({
   "map": {
     "angular": "github:angular/bower-angular@1.4.1",
+    "angular-google-maps": "github:angular-ui/angular-google-maps@2.1.5",
     "babel": "npm:babel-core@5.5.8",
     "babel-runtime": "npm:babel-runtime@5.5.8",
     "core-js": "npm:core-js@0.9.18",
