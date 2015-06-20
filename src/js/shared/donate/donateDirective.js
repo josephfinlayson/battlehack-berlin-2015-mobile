@@ -26,8 +26,6 @@ sharedModule.directive('pifDonate', ($http) => {
         postUrl = 'https://bh-berlin.herokuapp.com/api/charities/' + charity._id + '/payment';
       });
 
-
-
       vm.state = 'isLoading';
 
       $http.get(clientTokenUrl).then(function (resp) {
