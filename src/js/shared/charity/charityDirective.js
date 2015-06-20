@@ -9,6 +9,7 @@ sharedModule.directive('pifCharity', ($http) => {
     scope: {
       charity: '='
     },
+    replace: true,
     template: template,
     controllerAs: 'vm',
     bindToController: true,
