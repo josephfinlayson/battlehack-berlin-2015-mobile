@@ -21,6 +21,7 @@ System.config({
     "core-js": "npm:core-js@0.9.18",
     "ionic": "github:driftyco/ionic-bower@1.0.0",
     "lodash": "npm:lodash@3.9.3",
+    "text": "github:systemjs/plugin-text@0.0.2",
     "github:angular-ui/ui-router@0.2.13": {
       "angular": "github:angular/bower-angular@1.4.1"
     },
