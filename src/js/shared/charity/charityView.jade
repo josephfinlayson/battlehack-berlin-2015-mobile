@@ -1,7 +1,15 @@
 .card.energized-bg.in
   .item.clear-bg.item-bg-image.has-mask-reverse.in
+    h2 &nbsp;
+    .pull-right(style="text-align: right")
+      h2
+        i.icon.ion-ios-pulse-strong
+        span &nbsp; {{ vm.charity.points | number }}
+      h3
+        i.icon.ion-arrow-graph-up-right
+        span &nbsp; {{vm.charity.funds | currency }}
     h2 {{ vm.charity.name }}
-    p Land of Unicorns
+    p {{ vm.charity.description }}
     img(
       ng-src="{{vm.charity.image}}"
       )

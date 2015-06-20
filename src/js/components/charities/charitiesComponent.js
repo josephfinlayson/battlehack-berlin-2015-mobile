@@ -1,6 +1,7 @@
 'use strict';
 import componentsModule from '../components.module';
 import template from './charitiesView.html!text';
+import './charitiesStyles.css!css';
 
 componentsModule.directive('pifCharitiesComponent', ($ionicSideMenuDelegate) => {
 
@@ -13,11 +14,18 @@ componentsModule.directive('pifCharitiesComponent', ($ionicSideMenuDelegate) => 
       vm.charities = [
         {
           name: 'Test Charity 1',
-          image: 'http://lorempixel.com/400/200/1'  
+          description: 'Hello World This is fist charity',
+          image: 'http://lorempixel.com/800/200',
+          funds: 10000,
+          points: 20000
+
         },
         {
           name: 'Test Charity 2',
-          image: 'http://lorempixel.com/400/200/1'  
+          description: 'Land of Unicorns',
+          image: 'http://lorempixel.com/800/200',
+          funds: 4000,
+          points: 14000
         }
       ];
     }
