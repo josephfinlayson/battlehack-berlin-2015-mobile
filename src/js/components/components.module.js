@@ -1,5 +1,5 @@
 import angular from 'angular';
-import 'angular-google-maps';
+import 'ngmap';
 import 'ionic';
 
-export default angular.module('pif-components', ['ionic', 'uiGmapgoogle-maps']);
+export default angular.module('pif-components', ['ngMap']);
