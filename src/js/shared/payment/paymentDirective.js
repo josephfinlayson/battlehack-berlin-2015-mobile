@@ -16,8 +16,8 @@ sharedModule.directive('pifPayment', ($http) => {
     controller($element) {
       let vm = this;
 
-      let clientTokenUrl = 'http://bh-berlin.herokuapp.com/api/client-token';
-      let postUrl = 'http://bh-berlin.herokuapp.com/api/charities/' + vm.charityId + '/payment';
+      let clientTokenUrl = 'https://bh-berlin.herokuapp.com/api/client-token';
+      let postUrl = 'https://bh-berlin.herokuapp.com/api/charities/' + vm.charityId + '/payment';
 
       $http.get(clientTokenUrl).then(function (resp) {
         return resp.data;
