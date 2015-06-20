@@ -4,6 +4,7 @@ import template from './paymentView.html!text';
 componentsModule.directive('pifPaymentComponent', () => {
   return {
     restrict: 'E',
+    scope:{},
     template: template,
     controllerAs: 'vm',
     bindToController: true,
