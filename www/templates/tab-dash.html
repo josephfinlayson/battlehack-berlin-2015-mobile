@@ -4,7 +4,18 @@
       <div class="item item-divider">Buy something</div>
       <div class="item item-body">
         <div>
-          <form method="post" action="http://bh-berlin.herokuapp.com/payment-methods">
+          <ion-spinner
+              ng-if="state === 'isLoading'"
+              ></ion-spinner>
+          <h1
+              ng-if="state === 'isCompleted'"
+              >
+            Payment Completed.
+          </h1>
+          <form 
+              ng-if="state === 'isInitial'"
+              method="post" 
+              ng-submit="createTransaction()">
             <div id="dropin"></div>
             <input type="submit" value="Pay $300">
           </form>

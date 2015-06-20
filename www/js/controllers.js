@@ -1,17 +1,34 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http) {
+.controller('DashCtrl', function ($scope, $http) {
+  var clientTokenUrl = 'http://bh-berlin.herokuapp.com/api/client-token';
+  var postUrl = 'http://bh-berlin.herokuapp.com/api/payment-methods';
 
-  $http.get('http://bh-berlin.herokuapp.com/api/client-token').then(function(resp){
+  $http.get(clientTokenUrl).then(function (resp) {
     return resp.data;
-  }).then(function(token){
+  }).then(function (token) {
     braintree.setup(
       // Replace this with a client token from your server
       token,
-      "dropin", {
-        container: "dropin"
-    });
+      'dropin', 
+      {
+        container: 'dropin'
+      }
+    );
   });
+
+
+  $scope.state = 'isInitial';
+  $scope.createTransaction = function () {
+    $scope.state = 'isLoading';
+
+    var nonce = document.querySelector('[name="payment_method_nonce"]').value;
+    $http.post(postUrl, {
+        payment_method_nonce: nonce
+    }).then(function () {
+      $scope.state = 'isCompleted';
+    });
+  };
 
 })
 
