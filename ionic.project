@@ -1,4 +1,7 @@
 {
   "name": "app",
-  "app_id": "979e162c"
+  "app_id": "979e162c",
+  "watchPatterns": [
+    "www/*"
+  ]
 }
