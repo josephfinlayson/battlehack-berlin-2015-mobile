@@ -6,9 +6,14 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var gulpPlugins = require('gulp-load-plugins')();
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  less: ['./src/**/*.less'],
+  jade: ['./src/**/*.jade'],
+  js: ['./src/**/*.js'],
+  dist: 'www/'
 };
 
 gulp.task('default', ['sass']);
@@ -49,4 +54,24 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+gulp.task('less', function () {
+  return gulp.src(paths.less)
+      .pipe(gulpPlugins.plumber())
+      .pipe(gulpPlugins.less({compress: true}))
+      .pipe(gulp.dest(paths.dist));
+});
+
+
+gulp.task('jade', function() {
+  gulp.src(paths.jade)
+      .pipe(gulpPlugins.jade())
+      .pipe(gulp.dest(paths.dist))
+});
+
+
+gulp.task('js', function() {
+  gulp.src(paths.js)
+      .pipe(gulp.dest(paths.dist));
 });
