@@ -1,3 +1,5 @@
+'use strict';
 import angular from 'angular';
+import 'ngmap';
 
-export default angular.module('pif-components', []);
+export default angular.module('pif-components', ['ngMap']);
