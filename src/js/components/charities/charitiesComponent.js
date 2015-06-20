@@ -1,8 +1,6 @@
 'use strict';
 import componentsModule from '../components.module';
 import template from './charitiesView.html!text';
-
-import './charitiesService';
 import './charitiesStyles.css!css';
 
 componentsModule.directive('pifCharitiesComponent', (Charities) => {

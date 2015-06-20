@@ -22,6 +22,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.12",
     "ionic": "github:driftyco/ionic-bower@1.0.0",
     "ionic-material": "github:zachsoft/Ionic-Material@0.4.2",
+    "lodash": "npm:lodash@3.9.3",
     "ng-cordova": "npm:ng-cordova@0.1.17-alpha",
     "ngmap": "npm:ngmap@1.7.9",
     "text": "github:systemjs/plugin-text@0.0.2",
@@ -595,6 +596,9 @@ System.config({
       "lodash.escape": "npm:lodash.escape@3.0.0"
     },
     "npm:lodash@1.0.2": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:lodash@3.9.3": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:map-stream@0.1.0": {
