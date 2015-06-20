@@ -1,1 +1,1 @@
-# battlehack-berlin-2015 - Mobile App
+# battlehack-berlin-2015-mobile
