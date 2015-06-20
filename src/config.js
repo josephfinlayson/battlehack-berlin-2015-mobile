@@ -19,6 +19,7 @@ System.config({
     "babel": "npm:babel-core@5.5.8",
     "babel-runtime": "npm:babel-runtime@5.5.8",
     "core-js": "npm:core-js@0.9.18",
+    "css": "github:systemjs/plugin-css@0.1.12",
     "ionic": "github:driftyco/ionic-bower@1.0.0",
     "lodash": "npm:lodash@3.9.3",
     "text": "github:systemjs/plugin-text@0.0.2",
