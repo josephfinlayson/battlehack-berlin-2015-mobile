@@ -24,11 +24,11 @@ class Users {
       _.extend(this.cache[data._id], data);
     };
 
-    channel.bind('update', updateSingleCharity);
+    channel.bind('update', updateSingleUser);
     channel.bind('new', (data) => {
 
       _.extend(this.cache['all'], data);
-      _.each(data, updateSingleCharity);
+      _.each(data, updateSingleUser);
 
     });
 

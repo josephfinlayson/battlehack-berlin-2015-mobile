@@ -131,7 +131,7 @@ const app = angular.module('pif', [
             ;
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/map');
+        $urlRouterProvider.otherwise('/tab/map');
 
     }).controller('AuthController', function($scope, $cordovaGeolocation, $state, Users) {
       if (window.localStorage.knownUser) {
@@ -148,11 +148,13 @@ const app = angular.module('pif', [
           $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function (position) {
-              console.log(position.coords);
               var lat = position.coords.latitude;
-              var long = position.coords.longitude;
+              var longitude = position.coords.longitude;
 
-              //Users.updatePosition($scope.email, position.coords);
+              Users.updatePosition($scope.email, {
+                latitude: lat,
+                longitude: longitude
+              });
 
               $state.go('tab.map');
               return;
