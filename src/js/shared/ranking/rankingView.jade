@@ -9,9 +9,9 @@
     .col #
     .col User
     .col Score
-  .row(ng-repeat='user in users')
+  .row(ng-repeat='user in users | orderBy: "score"')
     .col {{ $index + 1 }}
     .col {{ user.email }}
-    .col {{ 1 }}
+    .col {{ user.score }}
 
 

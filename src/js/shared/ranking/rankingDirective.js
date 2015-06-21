@@ -1,7 +1,7 @@
 import sharedModule from '../shared.module';
 import template from './rankingView.html!text';
 import './rankingStyles.css!';
-
+import _ from 'lodash';
 
 sharedModule.directive('pifRanking', (Users) => {
 
@@ -19,6 +19,9 @@ sharedModule.directive('pifRanking', (Users) => {
       let vm = this;
 
       Users.getUsers().then((users) => {
+        _.map(users, (user) => {
+          user.score = _.reduce(user.charities || {}, (sum, score) => { return sum.points || sum + score.points || 0; });
+        });
         $scope.users = users;
       });
 
