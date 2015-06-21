@@ -3,13 +3,15 @@ import modelsModule from './models.module';
 
 class Charities {
   
-  constructor($q) {
-    this.$q = $q;
+  constructor($http) {
+    this.$http = $http;
   }
 
   getCharities() {
-
-    return this.$q.when([
+    return this.$http.get('https://bh-berlin.herokuapp.com/api/charities').then((response) => {
+      return response.data;
+    });
+    /*return this.$q.when([
       {
         _id: '1',
         name: 'Test Charity 1',
@@ -36,7 +38,7 @@ class Charities {
           coordinates: [12.9, 51.9]
         }
       }
-    ]);
+    ]);*/
   }
 
   getCharity(id) {
