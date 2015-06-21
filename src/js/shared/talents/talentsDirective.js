@@ -22,11 +22,12 @@ sharedModule.directive('pifTalents', ($state) => {
       ];
 
       vm.getProgressForLevel = function(level) {
+        console.log(vm.charityUser, vm.levels);
         if (!vm.charityUser) {
           return 0;
         }
         return Math.min(
-          vm.charityUser.points / vm.levels[level - 1], 
+          (vm.charityUser.points / vm.levels[level - 1]) * 100,
           100
         );
       };
@@ -38,19 +39,39 @@ sharedModule.directive('pifTalents', ($state) => {
       vm.talents = [
         {
           name: 'Ambassador',
-          image: 'http://lorempixel.com/150/150'
+          image: 'http://lorempixel.com/150/150',
+          active: false,
+          level: 1
         },
         {
           name: 'Pusher',
-          image: 'http://lorempixel.com/150/150'
+          image: 'http://lorempixel.com/150/150',
+          active: true,
+          level: 1
         },
         {
           name: 'Send E-mail',
-          image: 'http://lorempixel.com/150/150'
+          image: 'http://lorempixel.com/150/150',
+          active: false,
+          level: 2
         },
         {
           name: 'Send SMS',
-          image: 'http://lorempixel.com/150/150'
+          image: 'http://lorempixel.com/150/150',
+          active: false,
+          level: 2
+        },
+        {
+          name: 'Whatever you want',
+          image: 'http://lorempixel.com/150/150',
+          active: false,
+          level: 2
+        },
+        {
+          name: 'God mode',
+          image: 'http://lorempixel.com/150/150',
+          active: false,
+          level: 2
         }
       ];
     }

@@ -11,15 +11,10 @@ ion-content
 
     .item.item-body
       .row
-        .col-50
+        .col(ng-repeat='talent in vm.talents | filter: { level: 1 }')
           pif-talent(
-            talent="vm.talents[0]"
-            is-active="vm.isTalentActive(0)"  
-          )
-        .col-50
-          pif-talent(
-            talent="vm.talents[1]"
-            is-active="vm.isTalentActive(1)"
+            talent="talent"
+            is-active="talent.active"
           )
 
   .list.card
@@ -33,24 +28,9 @@ ion-content
 
     .item.item-body
       .row
-        .col-25
+        .col(ng-repeat='talent in vm.talents | filter: { level: 2 }')
           pif-talent(
-            talent="vm.talents[2]"
-            is-active="vm.isTalentActive(1)"
+          talent="talent"
+          is-active="talent.active"
           )
-        .col-25
-          pif-talent(
-            talent="vm.talents[3]"
-            is-active="vm.isTalentActive(1)"
-          )
-        .col-25
-          pif-talent(
-            talent="vm.talents[4]"
-            is-active="vm.isTalentActive(1)"
-          )
-        .col-25
-          pif-talent(
-            talent="vm.talents[5]"
-            is-active="vm.isTalentActive(1)"
-          )
-    
+
