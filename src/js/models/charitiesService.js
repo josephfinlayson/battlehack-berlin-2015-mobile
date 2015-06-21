@@ -1,26 +1,61 @@
 'use strict';
 import modelsModule from './models.module';
+import _ from 'lodash';
 
+function extractData(res) {
+  return res.data;
+}
 
 class Charities {
 
   constructor($http, PusherService) {
     this.$http = $http;
     this.pusher = PusherService;
-    this.pusher.subscribe('charity');
+    this.listenToUpdates(this.pusher.subscribe('charity'));
+    this.cache = {};
+  }
+
+  listenToUpdates(channel) {
+
+    let updateSingleCharity = (data) => {
+      _.extend(this.cache[data._id], data);
+    };
+
+    channel.bind('update', updateSingleCharity);
+    channel.bind('new', (data) => {
+
+      _.extend(this.cache['all'], data);
+      _.each(data, updateSingleCharity);
+
+    });
+
   }
 
   getCharities() {
-    return this.$http.get('https://bh-berlin.herokuapp.com/api/charities').then((response) => {
-      return response.data;
-    });
+    if (this.cache['all']) {
+      return $q.when(this.cache['all']);
+    }
+
+    return this.$http.get('https://bh-berlin.herokuapp.com/api/charities')
+      .then(extractData)
+      .then((charities) => {
+        this.cache['all'] = charities;
+        return charities;
+      });
   }
 
   getCharity(id) {
+    if (this.cache[id]) {
+      return this.cache[id];
+    }
+
     return this.getCharities().then((charities) => {
       return charities.filter((charity) => {
         return charity._id === id;
       })[0];
+    }).then((charity) => {
+      this.cache[id] = charity;
+      return charity;
     });
   }
 
