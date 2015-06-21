@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 //import emailView from '../../../views/emailView.html!text';
 
-componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeolocation, Users) => {
+componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeolocation, Users, $state) => {
     return {
         template,
         link: (scope) => {
@@ -40,8 +40,8 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
             $timeout(updateLocation, 10000);
           }
 
-            const drawMarker = (map, imageUrl, lat, lng, title, zIndex = 1) => {
-                new google.maps.Marker({
+            const drawMarker = (map, id, imageUrl, lat, lng, title, zIndex = 1) => {
+                let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(lat, lng),
                     map: map,
                     icon: {url: imageUrl},
@@ -49,6 +49,11 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
                     title: title,
                     zIndex: zIndex,
                     optimized: false
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                   $state.go('tab.charity.details', {
+                    id: id
+                   });
                 });
             };
 
@@ -78,7 +83,7 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
                 let charities = scope.charities || [];
                 _.each(charities, (element) => {
                     element.thumb = element.thumb || 'http://lorempixel.com/50/50';
-                    drawMarker(mapObject, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
+                    drawMarker(mapObject, element._id, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
                 });
             });
 
