@@ -7,7 +7,7 @@ var paths = {
   less: ['./src/**/*.less'],
   jade: ['./src/**/*.jade'],
   js: ['./src/**/*.js'],
-  all: ['./src/**'],
+  all: ['./src/**/*.*'],
   dist: 'www/'
 };
 

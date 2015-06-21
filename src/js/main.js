@@ -9,6 +9,7 @@ import mapView from '../views/map.html!text';
 import charitiesView from '../views/charities.html!text';
 import charityView from '../views/charity.html!text';
 import talentsView from '../views/talents.html!text';
+import rankingView from '../views/ranking.html!text';
 import charityDetailsView from '../views/charityDetails.html!text';
 import emailView from '../views/emailView.html!text';
 
@@ -114,6 +115,15 @@ const app = angular.module('pif', [
               views: {
                 'sub-content': {
                   template: talentsView
+                }
+              }
+            })
+
+            .state('tab.charity.ranking', {
+              url: '/ranking',
+              views: {
+                'sub-content': {
+                  template: rankingView
                 }
               }
             })

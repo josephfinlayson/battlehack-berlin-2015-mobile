@@ -10,16 +10,22 @@ div(style="min-height: calc(100vh - 44px)")
         )
 
 
-      button.button.button-large.button-clear.flat.icon.ion-ios-paper.pull-right.text-white(
+      button.button.button-large.button-clear.flat.icon.ion-information-circled.pull-right.text-white(
           title="Details"
           ui-sref-active="active"
           ui-sref="tab.charity.details({id: vm.charity._id})"
         )
 
-      button.button.button-large.button-clear.flat.icon.ion-fork-repo.pull-right.text-white(
+      button.button.button-large.button-clear.flat.icon.ion-network.pull-right.text-white(
           title="Talents"
           ui-sref-active="active"
           ui-sref="tab.charity.talents({id: vm.charity._id})"
+        )
+
+      button.button.button-large.button-clear.flat.icon.ion-android-people.pull-right.text-white(
+        title="Ranking"
+        ui-sref-active="active"
+        ui-sref="tab.charity.ranking({id: vm.charity._id})"
         )
 
 

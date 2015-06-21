@@ -38,19 +38,19 @@ sharedModule.directive('pifTalents', ($state) => {
       vm.talents = [
         {
           name: 'Ambassador',
-          image: 'http://lorempixel.com/100/100'
+          image: 'http://lorempixel.com/150/150'
         },
         {
           name: 'Pusher',
-          image: 'http://lorempixel.com/100/100'
+          image: 'http://lorempixel.com/150/150'
         },
         {
           name: 'Send E-mail',
-          image: 'http://lorempixel.com/100/100'
-        }, 
+          image: 'http://lorempixel.com/150/150'
+        },
         {
           name: 'Send SMS',
-          image: 'http://lorempixel.com/100/100'
+          image: 'http://lorempixel.com/150/150'
         }
       ];
     }

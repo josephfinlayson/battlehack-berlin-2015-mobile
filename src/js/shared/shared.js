@@ -5,5 +5,6 @@ import './charityDetails/charityDetailsDirective';
 import './charities/charitiesDirective';
 import './talent/talentDirective';
 import './talents/talentsDirective';
+import './ranking/rankingDirective';
 
 export * from './shared.module';
