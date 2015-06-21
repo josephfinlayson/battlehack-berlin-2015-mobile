@@ -5,13 +5,14 @@
   img(
     ng-src="{{vm.ranking.image}}"
   )
-  .row
-    .col #
-    .col User
-    .col Score
-  .row(ng-repeat='user in users | orderBy: "score"')
-    .col {{ $index + 1 }}
-    .col {{ user.email }}
-    .col {{ user.score }}
+  ion-content
+    .row.ranking-header
+      .col #
+      .col User
+      .col Score
+    .row(ng-repeat='user in users | orderBy: "-score"')
+      .col {{ $index + 1 }}
+      .col {{ user.email }}
+      .col {{ user.score }}
 
 
