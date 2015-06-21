@@ -3,11 +3,12 @@ import modelsModule from './models.module';
 
 class Charities {
   
-  constructor($q) {
-    this.$q = $q;
+  constructor($http) {
+    this.$http = $http;
   }
 
   getCharities() {
+
     return this.$q.when([
       {
         _id: '1',
