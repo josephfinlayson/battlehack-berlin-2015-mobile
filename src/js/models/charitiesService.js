@@ -3,8 +3,8 @@ import modelsModule from './models.module';
 
 class Charities {
   
-  constructor($http) {
-    this.$http = $http;
+  constructor($q) {
+    this.$q = $q;
   }
 
   getCharities() {
