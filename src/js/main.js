@@ -8,6 +8,7 @@ import donateView from '../views/donate.html!text';
 import mapView from '../views/map.html!text';
 import charitiesView from '../views/charities.html!text';
 import charityView from '../views/charity.html!text';
+import talentsView from '../views/talents.html!text';
 import charityDetailsView from '../views/charityDetails.html!text';
 
 import 'ionic-material/dist/ionic.material.min';
@@ -101,6 +102,15 @@ const app = angular.module('pif', [
               views: {
                 'sub-content': {
                   template: donateView
+                }
+              }
+            })
+
+            .state('tab.charity.talents', {
+              url: '/talents',
+              views: {
+                'sub-content': {
+                  template: talentsView
                 }
               }
             })

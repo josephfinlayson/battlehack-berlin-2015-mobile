@@ -1,0 +1,56 @@
+ion-content
+  .list.card
+    .item-divider
+      progress(
+        max="100"
+        value="{{ vm.getProgressForLevel(1) }}"
+        )
+
+    .item(style="text-align: center")
+      h1 Level 1
+
+    .item.item-body
+      .row
+        .col-50
+          pif-talent(
+            talent="vm.talents[0]"
+            is-active="vm.isTalentActive(0)"  
+          )
+        .col-50
+          pif-talent(
+            talent="vm.talents[1]"
+            is-active="vm.isTalentActive(1)"
+          )
+
+  .list.card
+    .item-divider
+      progress(
+        max="100"
+        value="{{ vm.getProgressForLevel(2) }}"
+        )
+    .item(style="text-align: center")
+      h1 Level 2
+
+    .item.item-body
+      .row
+        .col-25
+          pif-talent(
+            talent="vm.talents[2]"
+            is-active="vm.isTalentActive(1)"
+          )
+        .col-25
+          pif-talent(
+            talent="vm.talents[3]"
+            is-active="vm.isTalentActive(1)"
+          )
+        .col-25
+          pif-talent(
+            talent="vm.talents[4]"
+            is-active="vm.isTalentActive(1)"
+          )
+        .col-25
+          pif-talent(
+            talent="vm.talents[5]"
+            is-active="vm.isTalentActive(1)"
+          )
+    

@@ -3,5 +3,7 @@ import './donate/donateDirective';
 import './charity/charityDirective';
 import './charityDetails/charityDetailsDirective';
 import './charities/charitiesDirective';
+import './talent/talentDirective';
+import './talents/talentsDirective';
 
 export * from './shared.module';

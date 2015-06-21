@@ -15,6 +15,10 @@ componentsModule.directive('pifCharityComponent', ($stateParams,  Charities) => 
       vm.id = id;
       Charities.getCharity(id).then((charity)=>{
         vm.charity = charity;
+        vm.charityUser = {
+          points: 1000,
+          lvl: 1
+        };
         $rootScope.title = vm.charity.name;
       });
     }

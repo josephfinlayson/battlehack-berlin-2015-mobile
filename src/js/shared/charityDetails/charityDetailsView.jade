@@ -1,4 +1,4 @@
-div(style="min-height: 90vh")
+div(style="min-height: calc(100vh - 44px)")
   .hero.has-mask(
       ng-style="{'background-image': 'url(' + vm.charity.image + ')'}"
     )
@@ -19,7 +19,7 @@ div(style="min-height: 90vh")
       button.button.button-large.button-clear.flat.icon.ion-fork-repo.pull-right.text-white(
           title="Talents"
           ui-sref-active="active"
-          ui-sref="tab.talents({id: vm.charity._id})"
+          ui-sref="tab.charity.talents({id: vm.charity._id})"
         )
 
 
@@ -32,12 +32,27 @@ div(style="min-height: 90vh")
         i.icon.ion-arrow-graph-up-right
         span &nbsp; {{vm.charity.funds | currency }}
 
+    .pull-left
+      h3
+        button.button.button-clear.flat.text-white(
+            ng-show="vm.isDonateState() || vm.isTalentsState()"
+            ui-sref="tab.charity.details({id: vm.charity._id})"
+          )
+          i.icon.ion-chevron-left
+        button.button.button-clear.flat.text-white(
+            ng-show="!vm.isDonateState() && !vm.isTalentsState()"
+            ui-sref="tab.charities()"
+          )
+          i.icon.ion-chevron-left
     h3 {{ vm.charity.name }}
 
-  .content(style="height: 50vh")
+  .content(style="min-height: 50vh")
     ion-nav-view(
       name="sub-content"
     )
+
+  .bar.bar-footer.bar-stable
+    h3.title Your points {{ vm.charityUser.points | number }} (lvl {{vm.charityUser.lvl }})
 
   button.button.button-fab.button-fab-bottom-right.button-assertive.icon.ion-card(
       ng-class="{'hide': vm.isDonateState()}"

@@ -7,7 +7,8 @@ sharedModule.directive('pifCharityDetails', ($state) => {
   return {
     restrict: 'E',
     scope: {
-      charity: '='
+      charity: '=',
+      charityUser: '='
     },
     replace: true,
     template: template,
@@ -18,6 +19,9 @@ sharedModule.directive('pifCharityDetails', ($state) => {
 
       vm.isDonateState = ()=>{
         return $state.includes('tab.charity.donate');
+      };
+      vm.isTalentsState = () => {
+        return $state.includes('tab.charity.talents');
       };
     }
   }; 
