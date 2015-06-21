@@ -10,10 +10,13 @@ import charitiesView from '../views/charities.html!text';
 import charityView from '../views/charity.html!text';
 import talentsView from '../views/talents.html!text';
 import charityDetailsView from '../views/charityDetails.html!text';
+import emailView from '../views/emailView.html!text';
 
 import 'ionic-material/dist/ionic.material.min';
 import 'ionic-material/dist/ionic.material.min.css!';
 import 'ng-cordova/dist/ng-cordova.min';
+
+import _ from 'lodash';
 
 const app = angular.module('pif', [
     'ionic',
@@ -114,11 +117,50 @@ const app = angular.module('pif', [
                 }
               }
             })
+
+            .state('tab.auth', {
+              url: '/auth',
+              onEnter: setTitle('Who Are You?'),
+              views: {
+                'content': {
+                  template: emailView,
+                  controller: 'AuthController'
+                }
+              }
+            })
             ;
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/map');
+        $urlRouterProvider.otherwise('/map');
 
-    });
+    }).controller('AuthController', function($scope, $cordovaGeolocation, $state) {
+      if (window.localStorage.knownUser) {
+        $state.go('tab.map');
+        return;
+      }
+
+      $scope.submit = () => {
+        console.log($scope.email);
+        if (!_.isEmpty($scope.email)) {
+          window.localStorage.knownUser = $scope.email;
+          // log entered user
+          var posOptions = {timeout: 10000, enableHighAccuracy: false};
+          $cordovaGeolocation
+            .getCurrentPosition(posOptions)
+            .then(function (position) {
+              console.log(position);
+              var lat = position.coords.latitude;
+              var long = position.coords.longitude;
+
+
+              $state.go('tab.map');
+              return;
+            }, function (err) {
+              console.log(err);
+              // error
+            });
+        }
+      };
+  });
 
 angular.bootstrap(document, [app.name]);
