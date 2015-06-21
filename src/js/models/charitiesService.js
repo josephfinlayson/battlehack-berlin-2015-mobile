@@ -1,10 +1,13 @@
 'use strict';
 import modelsModule from './models.module';
 
+
 class Charities {
   
-  constructor($q) {
+  constructor($q, PusherService) {
     this.$q = $q;
+    this.pusher = PusherService;
+    this.pusher.subscribe('charity');
   }
 
   getCharities() {
@@ -37,6 +40,7 @@ class Charities {
         }
       }
     ]);
+
   }
 
   getCharity(id) {
