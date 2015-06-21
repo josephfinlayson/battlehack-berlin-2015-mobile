@@ -140,28 +140,10 @@ const app = angular.module('pif', [
       }
 
       $scope.submit = () => {
-        console.log($scope.email);
         if (!_.isEmpty($scope.email)) {
           window.localStorage.knownUser = $scope.email;
           // log entered user
-          var posOptions = {timeout: 10000, enableHighAccuracy: false};
-          $cordovaGeolocation
-            .getCurrentPosition(posOptions)
-            .then(function (position) {
-              var lat = position.coords.latitude;
-              var longitude = position.coords.longitude;
-
-              Users.updatePosition($scope.email, {
-                latitude: lat,
-                longitude: longitude
-              });
-
-              $state.go('tab.map');
-              return;
-            }, function (err) {
-              console.log(err);
-              // error
-            });
+          $state.go('tab.map');
         }
       };
   });

@@ -6,10 +6,33 @@ import _ from 'lodash';
 
 //import emailView from '../../../views/emailView.html!text';
 
-componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
+componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeolocation, Users) => {
     return {
         template,
         link: (scope) => {
+
+          function updateLocation() {
+            var email = window.localStorage.knownUser;
+            var posOptions = {timeout: 10000, enableHighAccuracy: false};
+            $cordovaGeolocation
+              .getCurrentPosition(posOptions)
+              .then(function (position) {
+                var lat = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                Users.updatePosition(email, {
+                  latitude: lat,
+                  longitude: longitude
+                });
+                return;
+              }, function (err) {
+                console.log(err);
+                // error
+              });
+
+            $timeout(updateLocation, 10000);
+          }
+          updateLocation();
 
             const drawMarker = (map, imageUrl, lat, lng, title, zIndex = 1) => {
                 new google.maps.Marker({

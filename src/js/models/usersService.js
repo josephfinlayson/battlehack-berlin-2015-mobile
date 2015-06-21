@@ -67,7 +67,7 @@ class Users {
   }
 
   updatePosition(email, newCoords) {
-    return $http.put(url + '/' + email, newCoords);
+    return this.$http.put(url + '/' + email, newCoords);
   }
 
 }
