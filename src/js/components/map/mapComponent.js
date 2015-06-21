@@ -74,6 +74,14 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
               mapObject.setCenter(new google.maps.LatLng(latitude, longitude));
             }
 
+            scope.$watch('charities.length', ()=>{
+                let charities = scope.charities || [];
+                _.each(charities, (element) => {
+                    element.thumb = element.thumb || 'http://lorempixel.com/50/50';
+                    drawMarker(mapObject, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
+                });
+            });
+
             scope.$on('mapInitialized', (event, map) => {
                     mapObject = map;
                     map.setCenter(new google.maps.LatLng(52, 13));
@@ -81,13 +89,7 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
                     updateLocation();
                     Charities.getCharities().then((charities) => {
                         scope.charities = charities;
-
                         rollCharity();
-
-                        _.each(charities, (element) => {
-                            element.thumb = element.thumb || 'http://lorempixel.com/50/50';
-                            drawMarker(map, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
-                        });
                     });
 
                 }
