@@ -4,6 +4,8 @@ import template from './mapView.html!text';
 import './mapStyles.css!';
 import _ from 'lodash';
 
+//import emailView from '../../../views/emailView.html!text';
+
 componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
     return {
         template,
@@ -53,6 +55,13 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
 
                 }
             );
+        },
+
+        controller: function($scope, $state) {
+            if (!window.localStorage.knownUser) {
+                $state.go('tab.auth');
+            }
         }
+
     };
 });
