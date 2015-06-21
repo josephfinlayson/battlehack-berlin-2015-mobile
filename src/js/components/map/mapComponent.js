@@ -11,6 +11,7 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
         template,
         link: (scope) => {
 
+          let firstTime = true;
           function updateLocation() {
             var email = window.localStorage.knownUser;
             var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -24,7 +25,11 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
 
                 Users.updatePosition(email, coordinates);
 
-                centerMap(coordinates.latitude, coordinates.longitude);
+
+                if (firstTime) {
+                  centerMap(coordinates.latitude, coordinates.longitude);
+                  firstTime = false;
+                }
 
                 return;
               }, function (err) {
