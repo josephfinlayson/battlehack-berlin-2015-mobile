@@ -20,7 +20,9 @@ sharedModule.directive('pifRanking', (Users) => {
 
       Users.getUsers().then((users) => {
         _.map(users, (user) => {
-          user.score = _.reduce(user.charities || {}, (sum, score) => { return sum.points || sum + score.points || 0; });
+          user.score = _.reduce(user.charities || {}, (sum, score) => { 
+            return sum + score.points || 0; 
+          }, 0);
         });
         $scope.users = users;
       });
