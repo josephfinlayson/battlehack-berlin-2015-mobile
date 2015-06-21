@@ -17,13 +17,15 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
             $cordovaGeolocation
               .getCurrentPosition(posOptions)
               .then(function (position) {
-                var lat = position.coords.latitude;
-                var longitude = position.coords.longitude;
+                const coordinates = {
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude
+                };
 
-                Users.updatePosition(email, {
-                  latitude: lat,
-                  longitude: longitude
-                });
+                Users.updatePosition(email, coordinates);
+
+                centerMap(coordinates.latitude, coordinates.longitude);
+
                 return;
               }, function (err) {
                 console.log(err);
@@ -32,7 +34,6 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
 
             $timeout(updateLocation, 10000);
           }
-          updateLocation();
 
             const drawMarker = (map, imageUrl, lat, lng, title, zIndex = 1) => {
                 new google.maps.Marker({
@@ -61,10 +62,18 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout, $cordovaGeol
             scope.$on('$destroy', ()=>{
                 isDestroyed = true;
             });
-            
+
+          var mapObject = null;
+
+            function centerMap(latitude, longitude) {
+              mapObject.setCenter(new google.maps.LatLng(latitude, longitude));
+            }
+
             scope.$on('mapInitialized', (event, map) => {
+                    mapObject = map;
                     map.setCenter(new google.maps.LatLng(52, 13));
                     map.setZoom(10);
+                    updateLocation();
                     Charities.getCharities().then((charities) => {
                         scope.charities = charities;
 

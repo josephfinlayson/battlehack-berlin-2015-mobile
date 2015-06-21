@@ -133,7 +133,7 @@ const app = angular.module('pif', [
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/map');
 
-    }).controller('AuthController', function($scope, $cordovaGeolocation, $state, Users) {
+    }).controller('AuthController', function($scope, $state) {
       if (window.localStorage.knownUser) {
         $state.go('tab.map');
         return;
