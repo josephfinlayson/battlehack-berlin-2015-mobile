@@ -4,7 +4,7 @@ import template from './mapView.html!text';
 import './mapStyles.css!';
 import _ from 'lodash';
 
-componentsModule.directive('pifMapComponent', (Charities) => {
+componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
     return {
         template,
         link: (scope) => {
