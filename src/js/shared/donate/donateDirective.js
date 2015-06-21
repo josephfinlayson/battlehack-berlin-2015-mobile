@@ -47,6 +47,7 @@ sharedModule.directive('pifDonate', ($http) => {
 
         var nonce = $element.find('[name="payment_method_nonce"]').val();
         $http.post(postUrl, {
+            email: window.localStorage.knownUser,
             payment_method_nonce: nonce
         }).then(function () {
           vm.state = 'isCompleted';
