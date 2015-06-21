@@ -4,41 +4,61 @@ import template from './mapView.html!text';
 import './mapStyles.css!';
 import _ from 'lodash';
 
-componentsModule.directive('pifMapComponent', (Charities) => {
-  return {
-    template,
-    link: (scope) => {
+componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
+    return {
+        template,
+        link: (scope) => {
 
-      const drawMarker = (map, imageUrl, lat, lng, title, zIndex = 1) => {
-        return new google.maps.Marker({
-          position: new google.maps.LatLng(lat, lng),
-          map: map,
-          icon: {url: imageUrl},
-          shape: {coords: [50, 50, 25], type: 'circle'},
-          title: title,
-          zIndex: zIndex,
-          optimized: false
-        });
-      };
+            const drawMarker = (map, imageUrl, lat, lng, title, zIndex = 1) => {
+                new google.maps.Marker({
+                    position: new google.maps.LatLng(lat, lng),
+                    map: map,
+                    icon: {url: imageUrl},
+                    shape: {coords: [50, 50, 25], type: 'circle'},
+                    title: title,
+                    zIndex: zIndex,
+                    optimized: false
+                });
+            };
 
-      scope.$on('mapInitialized', (event, map) => {
-          map.setCenter(new google.maps.LatLng(52, 13));
-          map.setZoom(10);
-          Charities.getCharities().then((charities) => {
-            _.each(charities, (element) => {
-              element.thumb = element.thumb || 'http://lorempixel.com/50/50';
-              let marker = drawMarker(map, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
-              var infowindow = new google.maps.InfoWindow({
-                content: element.description
-              });
-              google.maps.event.addListener(marker, 'click', () => {
-                infowindow.open(map, marker);
-              });
+            let isDestroyed;
+
+            function rollCharity() {
+                let a = scope.charities;
+                scope.currentCharity = a[Math.floor(Math.random() * a.length)];
+                if (isDestroyed) {
+                    return;
+                }
+
+                $timeout(rollCharity, 5000);
+            }
+
+            scope.$on('$destroy', ()=>{
+                isDestroyed = true;
             });
-          });
+            
+            scope.$on('mapInitialized', (event, map) => {
+                    map.setCenter(new google.maps.LatLng(52, 13));
+                    map.setZoom(10);
+                    Charities.getCharities().then((charities) => {
+                        scope.charities = charities;
 
+                        rollCharity();
+
+                        _.each(charities, (element) => {
+                            element.thumb = element.thumb || 'http://lorempixel.com/50/50';
+                            let marker = drawMarker(map, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
+                            var infowindow = new google.maps.InfoWindow({
+                                content: element.description
+                            });
+                            google.maps.event.addListener(marker, 'click', () => {
+                                infowindow.open(map, marker);
+                            });
+                        });
+                    });
+
+                }
+            );
         }
-      );
-    }
-  };
+    };
 });
