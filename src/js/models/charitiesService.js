@@ -23,13 +23,18 @@ class Charities {
     };
 
     channel.bind('update', updateSingleCharity);
-    channel.bind('new', (data) => {
-
-      _.extend(this.cache['all'], data);
-      _.each(data, updateSingleCharity);
-
+    channel.bind('new', () => {
+      this._getCharitiesWithNoCache().then((data) => {
+        _.extend(this.cache['all'], data);
+        _.each(data, updateSingleCharity);
+      });
     });
 
+  }
+
+  _getCharitiesWithNoCache() {
+    return this.$http.get('https://bh-berlin.herokuapp.com/api/charities')
+      .then(extractData);
   }
 
   getCharities() {
@@ -37,8 +42,7 @@ class Charities {
       return this.$q.when(this.cache['all']);
     }
 
-    return this.$http.get('https://bh-berlin.herokuapp.com/api/charities')
-      .then(extractData)
+    return this._getCharitiesWithNoCache()
       .then((charities) => {
         this.cache['all'] = charities;
         return charities;
