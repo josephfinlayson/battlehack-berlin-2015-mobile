@@ -22,6 +22,9 @@ sharedModule.directive('pifTalents', ($state) => {
       ];
 
       vm.getProgressForLevel = function(level) {
+        if (!vm.charityUser) {
+          return 0;
+        }
         return Math.min(
           vm.charityUser.points / vm.levels[level - 1], 
           100
@@ -29,7 +32,7 @@ sharedModule.directive('pifTalents', ($state) => {
       };
 
       vm.isTalentActive = function(talent) {
-        return true;
+        return talent % 3;
       };
 
       vm.talents = [
