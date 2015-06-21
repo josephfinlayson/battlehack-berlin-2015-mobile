@@ -1,6 +1,6 @@
 div(style="min-height: calc(100vh - 44px)")
   .hero.has-mask(
-      ng-style="{'background-image': 'url(data:' + vm.charity.image + ')'}"
+      ng-style="{'background-image': 'url(data:' + vm.charity.image + '); background-size: contains;'}"
     )
     .content
       button.button.button-large.button-clear.flat.icon.ion-heart.pull-right.text-white(
