@@ -6,19 +6,19 @@ function extractData(res) {
   return res.data;
 }
 
-class Charities {
+class Users {
 
   constructor($q, $http, PusherService) {
     this.$q = $q;
     this.$http = $http;
     this.pusher = PusherService;
-    this.listenToUpdates(this.pusher.subscribe('charity'));
+    this.listenToUpdates(this.pusher.subscribe('users'));
     this.cache = {};
   }
 
   listenToUpdates(channel) {
 
-    let updateSingleCharity = (data) => {
+    let updateSingleUser = (data) => {
       _.extend(this.cache[data._id], data);
     };
 
@@ -32,12 +32,12 @@ class Charities {
 
   }
 
-  getCharities() {
+  getUsers() {
     if (this.cache['all']) {
       return this.$q.when(this.cache['all']);
     }
 
-    return this.$http.get('https://bh-berlin.herokuapp.com/api/charities')
+    return this.$http.get('https://bh-berlin.herokuapp.com/api/users')
       .then(extractData)
       .then((charities) => {
         this.cache['all'] = charities;
@@ -45,12 +45,16 @@ class Charities {
       });
   }
 
-  getCharity(id) {
+  getCurrentUser() {
+    return getUser(1);
+  }
+
+  getUser(id) {
     if (this.cache[id]) {
       return this.$q.when(this.cache[id]);
     }
 
-    return this.getCharities().then((charities) => {
+    return this.getUsers().then((charities) => {
       return charities.filter((charity) => {
         return charity._id === id;
       })[0];
@@ -62,4 +66,4 @@ class Charities {
 
 }
 
-modelsModule.service('Charities', Charities);
+modelsModule.service('Users', Users);

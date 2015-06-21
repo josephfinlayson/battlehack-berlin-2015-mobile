@@ -3,7 +3,7 @@ import componentsModule from '../components.module';
 import template from './charityView.html!text';
 import './charityStyles.css!css';
 
-componentsModule.directive('pifCharityComponent', ($stateParams,  Charities) => {
+componentsModule.directive('pifCharityComponent', ($stateParams,  Charities, Users) => {
 
   return {
     template: template,
@@ -12,13 +12,14 @@ componentsModule.directive('pifCharityComponent', ($stateParams,  Charities) => 
     controller($rootScope) {
       let vm = this;
       var id = $stateParams.id;
-      vm.id = id;
+
       Charities.getCharity(id).then((charity)=>{
         vm.charity = charity;
-        vm.charityUser = {
-          points: 1000,
-          lvl: 1
-        };
+
+        Users.getCurrentUser().then((user)=>{
+          vm.charityUser = user.charities[charity._id];
+        });
+
         $rootScope.title = vm.charity.name;
       });
     }
