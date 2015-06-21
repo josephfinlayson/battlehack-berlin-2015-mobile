@@ -47,13 +47,7 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
 
                         _.each(charities, (element) => {
                             element.thumb = element.thumb || 'http://lorempixel.com/50/50';
-                            let marker = drawMarker(map, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
-                            var infowindow = new google.maps.InfoWindow({
-                                content: element.description
-                            });
-                            google.maps.event.addListener(marker, 'click', () => {
-                                infowindow.open(map, marker);
-                            });
+                            drawMarker(map, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
                         });
                     });
 
