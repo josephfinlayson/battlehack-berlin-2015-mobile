@@ -6,6 +6,8 @@ function extractData(res) {
   return res.data;
 }
 
+let url = 'https://bh-berlin.herokuapp.com/api/users';
+
 class Users {
 
   constructor($q, $http, PusherService) {
@@ -37,7 +39,7 @@ class Users {
       return this.$q.when(this.cache['all']);
     }
 
-    return this.$http.get('https://bh-berlin.herokuapp.com/api/users')
+    return this.$http.get(url)
       .then(extractData)
       .then((charities) => {
         this.cache['all'] = charities;
@@ -62,6 +64,10 @@ class Users {
       this.cache[id] = charity;
       return charity;
     });
+  }
+
+  updatePosition(email, newCoords) {
+    return $http.post(url + '/' + email, newCoords);
   }
 
 }
