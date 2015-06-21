@@ -48,7 +48,7 @@ class Users {
   }
 
   getCurrentUser() {
-    return getUser(1);
+    return this.getUser(window.localStorage.knownUser);
   }
 
   getUser(id) {
@@ -58,7 +58,7 @@ class Users {
 
     return this.getUsers().then((charities) => {
       return charities.filter((charity) => {
-        return charity._id === id;
+        return charity.email === id;
       })[0];
     }).then((charity) => {
       this.cache[id] = charity;

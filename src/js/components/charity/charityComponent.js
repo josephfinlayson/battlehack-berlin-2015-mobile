@@ -17,7 +17,11 @@ componentsModule.directive('pifCharityComponent', ($stateParams,  Charities, Use
         vm.charity = charity;
 
         Users.getCurrentUser().then((user)=>{
-          vm.charityUser = user.charities[charity._id];
+          let charities = user.charities || {};
+          vm.charityUser = charities[charity._id] || {
+              points: 0,
+              lvl: 1
+          };
         });
 
         $rootScope.title = vm.charity.name;
