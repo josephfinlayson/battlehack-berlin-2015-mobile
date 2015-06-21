@@ -3,44 +3,17 @@ import modelsModule from './models.module';
 
 
 class Charities {
-  
-  constructor($q, PusherService) {
-    this.$q = $q;
+
+  constructor($http, PusherService) {
+    this.$http = $http;
     this.pusher = PusherService;
     this.pusher.subscribe('charity');
   }
 
   getCharities() {
-
-    return this.$q.when([
-      {
-        _id: '1',
-        name: 'Test Charity 1',
-        description: 'Hello World This is fist charity',
-        image: 'http://lorempixel.com/800/200',
-        thumb: 'http://lorempixel.com/50/50',
-        funds: 10000,
-        points: 20000,
-        coords: {
-          type: 'Point',
-          coordinates: [13, 52]
-        }
-      },
-      {
-        _id: '2',
-        name: 'Test Charity 2',
-        description: 'Land of Unicorns',
-        image: 'http://lorempixel.com/800/200',
-        thumb: 'http://lorempixel.com/50/50',
-        funds: 4000,
-        points: 14000,
-        coords: {
-          type: 'Point',
-          coordinates: [12.9, 51.9]
-        }
-      }
-    ]);
-
+    return this.$http.get('https://bh-berlin.herokuapp.com/api/charities').then((response) => {
+      return response.data;
+    });
   }
 
   getCharity(id) {
@@ -50,6 +23,7 @@ class Charities {
       })[0];
     });
   }
+
 }
 
 modelsModule.service('Charities', Charities);

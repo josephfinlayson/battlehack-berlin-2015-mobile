@@ -24,19 +24,19 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
             let isDestroyed;
 
             function rollCharity() {
-              let a = scope.charities;
-              scope.currentCharity = a[Math.floor(Math.random() * a.length)];
-              if (isDestroyed) {
-                return;
-              }
+                let a = scope.charities;
+                scope.currentCharity = a[Math.floor(Math.random() * a.length)];
+                if (isDestroyed) {
+                    return;
+                }
 
-              $timeout(rollCharity, 5000);
+                $timeout(rollCharity, 5000);
             }
 
             scope.$on('$destroy', ()=>{
-              isDestroyed = true;
+                isDestroyed = true;
             });
-
+            
             scope.$on('mapInitialized', (event, map) => {
                     map.setCenter(new google.maps.LatLng(52, 13));
                     map.setZoom(10);
@@ -46,7 +46,8 @@ componentsModule.directive('pifMapComponent', (Charities, $timeout) => {
                         rollCharity();
 
                         _.each(charities, (element) => {
-                            drawMarker(map, element.thumb, element.coords.coordinates[1], element.coords.coordinates[0], element.name);
+                            element.thumb = element.thumb || 'http://lorempixel.com/50/50';
+                            drawMarker(map, element.thumb, element.coordinates.latitude, element.coordinates.longitude, element.name);
                         });
                     });
 
