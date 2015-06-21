@@ -22,11 +22,12 @@ sharedModule.directive('pifTalents', ($state) => {
       ];
 
       vm.getProgressForLevel = function(level) {
+        console.log(vm.charityUser, vm.levels);
         if (!vm.charityUser) {
           return 0;
         }
         return Math.min(
-          vm.charityUser.points / vm.levels[level - 1], 
+          (vm.charityUser.points / vm.levels[level - 1]) * 100,
           100
         );
       };

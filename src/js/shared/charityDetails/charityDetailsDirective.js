@@ -10,11 +10,11 @@ sharedModule.directive('pifCharityDetails', ($state) => {
       charity: '=',
       charityUser: '='
     },
-    replace: true,
+    replace: false,
     template: template,
     controllerAs: 'vm',
     bindToController: true,
-    controller($element) {
+    controller($element, $scope) {
       let vm = this;
 
       vm.isDonateState = ()=>{
@@ -23,7 +23,11 @@ sharedModule.directive('pifCharityDetails', ($state) => {
       vm.isTalentsState = () => {
         return $state.includes('tab.charity.talents');
       };
+
+      $scope.$watch(() => vm.charity, (dupa)=>{
+        console.log(dupa);
+      });
     }
-  }; 
+  };
 });
 
