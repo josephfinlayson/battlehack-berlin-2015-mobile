@@ -8,6 +8,7 @@ class Charities {
   }
 
   getCharities() {
+
     return this.$q.when([
       {
         _id: '1',
@@ -18,8 +19,8 @@ class Charities {
         funds: 10000,
         points: 20000,
         coords: {
-          lat: 54,
-          lng: 16
+          type: 'Point',
+          coordinates: [13, 52]
         }
       },
       {
@@ -31,8 +32,8 @@ class Charities {
         funds: 4000,
         points: 14000,
         coords: {
-          lat: 52,
-          lng: 13
+          type: 'Point',
+          coordinates: [12.9, 51.9]
         }
       }
     ]);

@@ -3,5 +3,8 @@
   "app_id": "979e162c",
   "watchPatterns": [
     "www/*"
+  ],
+  "gulpStartupTasks": [
+    "watch"
   ]
 }

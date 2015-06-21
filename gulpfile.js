@@ -7,27 +7,14 @@ var paths = {
   less: ['./src/**/*.less'],
   jade: ['./src/**/*.jade'],
   js: ['./src/**/*.js'],
+  all: ['./src/**'],
   dist: 'www/'
 };
 
-gulp.task('default', ['sass']);
-
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
-    .pipe(gulpPlugins.sass({
-      errLogToConsole: true
-    }))
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(gulpPlugins.minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(gulpPlugins.rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
-});
+gulp.task('default', ['copy']);
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.all, ['copy']);
 });
 
 gulp.task('install', ['git-check'], function() {
